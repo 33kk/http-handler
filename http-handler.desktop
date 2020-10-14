@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Link Handler
+Exec=http-handler %u
+Icon=web
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+StartupNotify=true
+MimeType=x-scheme-handler/http;x-scheme-handler/https;

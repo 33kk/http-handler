@@ -1,0 +1,17 @@
+#!/bin/sh
+
+. "${XDG_CONFIG_HOME:-$HOME/.config}/http-handler/config"
+
+if echo "$@" | grep -E "\.(png|jpg|jpeg|gif|bmp)($|\\?|#)" > /dev/null; then
+	exec "$IMAGE" "$@"
+elif echo "$@" | grep -E "\.(mp4|flv|avi|mov|m4v|m4a|mp3)($|\\?|#)" > /dev/null; then
+	exec "$VIDEO" "$@"
+elif echo "$@" | grep -E "\.(m3u|m3u8)($|\\?|#)" > /dev/null; then
+	exec "$M3U" "$@"
+elif echo "$@" | grep -E "https://osu.ppy.sh/b(eatmapsets)?/" > /dev/null; then
+	osuget "$1"
+	exit 0
+else
+	exec "$BROWSER" "$@"
+fi
+
